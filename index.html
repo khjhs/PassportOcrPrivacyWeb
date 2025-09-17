@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡易旅行文件OCR - 護照台胞證快速掃描識別工具</title>
+    <meta name="description" content="專業的旅行文件OCR識別工具，支援護照、台胞證快速掃描與資料提取。離線使用，保護隱私，是您出國旅行的最佳助手。">
+    <meta name="keywords" content="護照掃描,台胞證,OCR,文件識別,旅行工具,出國,簽證">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #007AFF;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #007AFF;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 100px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: #007AFF;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 122, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 122, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 20px;
+            background: #f8f9fa;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Screenshots Section */
+        .screenshots {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .screenshot {
+            text-align: center;
+        }
+
+        .screenshot img {
+            width: 200px;
+            height: 350px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            object-fit: cover;
+        }
+
+        .screenshot h4 {
+            margin-top: 20px;
+            color: #333;
+            font-size: 1.2em;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: #007AFF;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .footer-section a {
+            color: #ecf0f1;
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #3498db;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #34495e;
+            color: #95a5a6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .features-grid,
+            .screenshots-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">📱 簡易旅行文件OCR</div>
+            <ul class="nav-links">
+                <li><a href="#features">功能特色</a></li>
+                <li><a href="#screenshots">應用截圖</a></li>
+                <li><a href="#pricing">價格方案</a></li>
+                <li><a href="support.html">支援</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>護照台胞證<br>快速掃描識別</h1>
+                <p>專業的旅行文件OCR工具，支援離線使用，保護您的隱私安全<br>讓證件管理變得更加輕鬆便捷</p>
+
+                <div class="download-buttons">
+                    <a href="#" class="btn btn-primary">
+                        📱 App Store 下載
+                    </a>
+                    <a href="#features" class="btn btn-secondary">
+                        🔍 了解更多
+                    </a>
+                </div>
+
+                <div style="margin-top: 50px;">
+                    <p style="font-size: 0.9em; opacity: 0.8;">
+                        ⭐ 4.8 分評價 | 📱 iOS 17.6+ | 🔒 隱私保護
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">為什麼選擇我們？</h2>
+            <p class="section-subtitle">專業的OCR技術，為旅行者量身打造的文件識別工具</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📸</div>
+                    <h3>智能文件識別</h3>
+                    <p>支援護照、台胞證等旅行文件的高精度OCR識別，快速提取關鍵資訊，準確率高達95%以上。</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>隱私安全保護</h3>
+                    <p>支援完全離線使用，文件資料儲存在本機，不上傳雲端，確保您的個人資訊安全無憂。</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>快速便捷操作</h3>
+                    <p>簡潔直觀的操作介面，一鍵拍攝或選擇照片，自動識別提取，一鍵複製結果，節省寶貴時間。</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">☁️</div>
+                    <h3>雲端同步功能</h3>
+                    <p>VIP用戶享有雲端同步服務，多設備資料同步，隨時隨地查看您的旅行文件資訊。</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>多語言支援</h3>
+                    <p>支援多種語言的護照識別，無論是中文、英文還是其他語言的證件，都能準確識別。</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>專業級準確度</h3>
+                    <p>採用先進的機器學習算法，持續優化識別精度，確保為您提供最準確的文件資訊提取。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screenshots" class="screenshots">
+        <div class="container">
+            <h2 class="section-title">應用截圖</h2>
+            <p class="section-subtitle">簡潔美觀的設計，直觀易用的操作體驗</p>
+
+            <div class="screenshots-grid">
+                <div class="screenshot">
+                    <div style="width: 200px; height: 350px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em;">
+                        護照掃描<br>主畫面
+                    </div>
+                    <h4>護照掃描功能</h4>
+                </div>
+
+                <div class="screenshot">
+                    <div style="width: 200px; height: 350px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 20px; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em;">
+                        台胞證掃描<br>介面
+                    </div>
+                    <h4>台胞證識別</h4>
+                </div>
+
+                <div class="screenshot">
+                    <div style="width: 200px; height: 350px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 20px; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em;">
+                        識別結果<br>顯示
+                    </div>
+                    <h4>結果顯示頁面</h4>
+                </div>
+
+                <div class="screenshot">
+                    <div style="width: 200px; height: 350px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); border-radius: 20px; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em;">
+                        設定與<br>帳戶管理
+                    </div>
+                    <h4>設定頁面</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">選擇適合您的方案</h2>
+            <p class="section-subtitle">靈活的價格選項，滿足不同用戶需求</p>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>免費版</h3>
+                    <div class="price">免費</div>
+                    <ul class="pricing-features">
+                        <li>✅ 每月限制使用次數</li>
+                        <li>✅ 基本OCR識別功能</li>
+                        <li>✅ 護照台胞證掃描</li>
+                        <li>✅ 本機資料儲存</li>
+                        <li>❌ 廣告顯示</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">開始使用</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3>VIP 月訂閱</h3>
+                    <div class="price">NT$ 690<span style="font-size: 0.5em;">/月</span></div>
+                    <ul class="pricing-features">
+                        <li>✅ 無限制掃描次數</li>
+                        <li>✅ 無廣告體驗</li>
+                        <li>✅ 雲端同步功能</li>
+                        <li>✅ 優先客戶支援</li>
+                        <li>✅ 提前體驗新功能</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">立即升級</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>掃描包</h3>
+                    <div class="price">NT$ 120<span style="font-size: 0.5em;">起</span></div>
+                    <ul class="pricing-features">
+                        <li>✅ 100張掃描包 - NT$ 120</li>
+                        <li>✅ 500張掃描包 - NT$ 350</li>
+                        <li>✅ 永久有效</li>
+                        <li>✅ 無使用期限</li>
+                        <li>❌ 仍有廣告顯示</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">購買掃描包</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>產品</h4>
+                    <a href="#features">功能特色</a>
+                    <a href="#pricing">價格方案</a>
+                    <a href="#screenshots">應用截圖</a>
+                    <a href="#">系統需求</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>支援</h4>
+                    <a href="support.html">使用說明</a>
+                    <a href="support.html#faq">常見問題</a>
+                    <a href="mailto:support@travelocr.app">聯絡我們</a>
+                    <a href="#">意見回饋</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>法律條款</h4>
+                    <a href="privacy-policy.html">隱私權政策</a>
+                    <a href="terms-of-service.html">服務條款</a>
+                    <a href="#">免責聲明</a>
+                    <a href="#">著作權聲明</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>開發者</h4>
+                    <a href="#">關於我們</a>
+                    <a href="#">開發者部落格</a>
+                    <a href="#">技術支援</a>
+                    <a href="mailto:developer@travelocr.app">開發者聯絡</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 簡易旅行文件OCR. 保留所有權利.</p>
+                <p>專為旅行者設計的文件識別工具 | 讓旅行更輕鬆</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

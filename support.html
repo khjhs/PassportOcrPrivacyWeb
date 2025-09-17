@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>應用程式支援 - 簡易旅行文件OCR</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #007AFF;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        h2 {
+            color: #007AFF;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #007AFF;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #333;
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .intro {
+            text-align: center;
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .contact-box {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #007AFF;
+        }
+        .faq-item {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 3px solid #28a745;
+        }
+        .faq-question {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .faq-answer {
+            color: #666;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .important {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .tips {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+        }
+        .support-stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin: 30px 0;
+        }
+        .stat-item {
+            flex: 1;
+            padding: 20px;
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #007AFF;
+        }
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>應用程式支援</h1>
+        <p class="intro">歡迎使用簡易旅行文件OCR！我們致力於為您提供最佳的使用體驗。</p>
+
+        <div class="support-stats">
+            <div class="stat-item">
+                <div class="stat-number">24h</div>
+                <div class="stat-label">平均回覆時間</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">問題解決率</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5★</div>
+                <div class="stat-label">用戶滿意度</div>
+            </div>
+        </div>
+
+        <h2>聯絡我們</h2>
+        <div class="contact-box">
+            <h3>📧 電子郵件支援</h3>
+            <p><strong>一般支援：</strong>support@travelocr.app</p>
+            <p><strong>技術問題：</strong>tech@travelocr.app</p>
+            <p><strong>訂閱相關：</strong>billing@travelocr.app</p>
+            <p><strong>回覆時間：</strong>24小時內回覆（工作天）</p>
+        </div>
+
+        <div class="contact-box">
+            <h3>📱 應用程式內支援</h3>
+            <p>開啟應用程式 → 設定 → 聯絡支援</p>
+            <p>我們會自動收集您的設備資訊，以便更快解決問題。</p>
+        </div>
+
+        <h2>常見問題解答 (FAQ)</h2>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: 如何開始使用OCR功能？</div>
+            <div class="faq-answer">
+                A: 開啟應用程式，選擇「護照掃描」或「台胞證掃描」，然後：
+                <ol>
+                    <li>點擊「開始掃描」使用相機拍攝</li>
+                    <li>或點擊「從照片選擇」從相簿選取</li>
+                    <li>確保文件清晰可見，光線充足</li>
+                    <li>等待自動識別完成</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: 為什麼OCR識別不準確？</div>
+            <div class="faq-answer">
+                A: OCR準確性受多種因素影響：
+                <ul>
+                    <li><strong>圖片品質：</strong>確保圖片清晰、對焦準確</li>
+                    <li><strong>光線條件：</strong>避免強光反射或陰影</li>
+                    <li><strong>文件狀態：</strong>確保文件平整、沒有摺痕</li>
+                    <li><strong>拍攝角度：</strong>盡量垂直拍攝，避免傾斜</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: 我的使用次數用完了怎麼辦？</div>
+            <div class="faq-answer">
+                A: 您有以下選項：
+                <ul>
+                    <li>等待下個月重置（免費用戶每月重置）</li>
+                    <li>購買100張或500張掃描包</li>
+                    <li>升級為VIP會員享受無限制使用</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: VIP訂閱包含哪些功能？</div>
+            <div class="faq-answer">
+                A: VIP訂閱包含：
+                <ul>
+                    <li>無限制掃描次數</li>
+                    <li>無廣告體驗</li>
+                    <li>雲端同步功能</li>
+                    <li>優先客戶支援</li>
+                    <li>提前體驗新功能</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: 如何取消訂閱？</div>
+            <div class="faq-answer">
+                A: 請透過您的設備設定取消：
+                <ul>
+                    <li><strong>iOS：</strong>設定 → Apple ID → 訂閱 → 簡易旅行文件OCR → 取消訂閱</li>
+                    <li><strong>Android：</strong>Google Play → 帳戶 → 訂閱 → 簡易旅行文件OCR → 取消</li>
+                </ul>
+                <p>取消後，您仍可使用至當前付費期間結束。</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: 我的資料安全嗎？</div>
+            <div class="faq-answer">
+                A: 我們非常重視您的資料安全：
+                <ul>
+                    <li>文件圖片預設僅存於您的設備本機</li>
+                    <li>雲端同步採用端對端加密</li>
+                    <li>我們不會分享您的個人資料</li>
+                    <li>遵循GDPR和台灣個資法規定</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: 支援哪些文件類型？</div>
+            <div class="faq-answer">
+                A: 目前支援：
+                <ul>
+                    <li><strong>護照：</strong>各國護照的資料頁</li>
+                    <li><strong>台胞證：</strong>台灣居民來往大陸通行證</li>
+                    <li>未來將加入更多文件類型支援</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>使用技巧</h2>
+        <div class="tips">
+            <h3>📸 拍攝技巧</h3>
+            <ul>
+                <li>確保光線充足，避免陰影</li>
+                <li>將文件放在平整、對比度高的背景上</li>
+                <li>手機與文件保持平行，避免傾斜</li>
+                <li>確保文件完全在取景框內</li>
+                <li>避免手震，可使用音量鍵拍攝</li>
+            </ul>
+        </div>
+
+        <div class="tips">
+            <h3>🔧 故障排除</h3>
+            <ul>
+                <li><strong>應用程式卡住：</strong>關閉應用程式後重新開啟</li>
+                <li><strong>相機無法開啟：</strong>檢查相機權限設定</li>
+                <li><strong>識別失敗：</strong>嘗試重新拍攝，注意光線和角度</li>
+                <li><strong>網路錯誤：</strong>檢查網路連線，嘗試離線模式</li>
+            </ul>
+        </div>
+
+        <h2>系統需求</h2>
+        <div class="important">
+            <h3>最低系統需求</h3>
+            <ul>
+                <li><strong>iOS：</strong>iOS 17.6 或以上版本</li>
+                <li><strong>儲存空間：</strong>至少 50MB 可用空間</li>
+                <li><strong>相機：</strong>支援自動對焦的後置相機</li>
+                <li><strong>網路：</strong>部分功能需要網路連線</li>
+            </ul>
+
+            <h3>建議配置</h3>
+            <ul>
+                <li>iPhone 12 或更新機型</li>
+                <li>充足的儲存空間用於文件保存</li>
+                <li>穩定的Wi-Fi或行動網路連線</li>
+            </ul>
+        </div>
+
+        <h2>回饋與建議</h2>
+        <p>您的意見對我們很重要！歡迎透過以下方式提供回饋：</p>
+        <ul>
+            <li>應用程式內評分和評論</li>
+            <li>發送電子郵件至 feedback@travelocr.app</li>
+            <li>在App Store留下評價</li>
+        </ul>
+
+        <h2>更新說明</h2>
+        <p>我們定期發布更新以改善功能和修復問題：</p>
+        <ul>
+            <li>開啟App Store自動更新以獲得最新功能</li>
+            <li>查看「設定」→「關於」了解目前版本</li>
+            <li>更新說明會在應用程式內顯示</li>
+        </ul>
+
+        <div class="footer">
+            <p>© 2025 簡易旅行文件OCR. 保留所有權利.</p>
+            <p>感謝您的支持！我們致力於為您提供最佳的服務體驗。</p>
+        </div>
+    </div>
+</body>
+</html>
